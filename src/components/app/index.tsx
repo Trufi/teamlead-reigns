@@ -62,6 +62,7 @@ export const App = () => {
                     style={{
                         position: 'absolute',
                         top: 0,
+                        left: 0,
                         width: '100vw',
                         height: '100vh',
                         lineHeight: '100vh',
@@ -70,11 +71,23 @@ export const App = () => {
                         fontWeight: 700,
                         color: '#ff0000',
                         background: 'radial-gradient(#ff00004f, #00000000)',
+                        userSelect: 'none',
                     }}
                 >
                     WASTED
                 </div>
             )}
+            <div
+                style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    fontStyle: 'italic',
+                    fontSize: '10px',
+                }}
+            >
+                Игра про сложную жизнь тимлида. Все совпадения случайны.
+            </div>
         </div>
     );
 };

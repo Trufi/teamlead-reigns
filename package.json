@@ -2,6 +2,16 @@
     "name": "teamlead-reigns",
     "version": "0.0.1",
     "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Trufi/teamlead-reigns.git"
+    },
+    "author": {
+        "name": "Mstislav Zhivodkov",
+        "email": "stevemyz@gmail.com",
+        "url": "https://trufi.github.io/"
+    },
+    "license": "MIT",
     "dependencies": {
         "@types/jest": "24.0.15",
         "@types/react": "16.8.23",
