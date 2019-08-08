@@ -41,6 +41,7 @@ export interface State {
     deck: Array<DeckCard>;
     lose: boolean;
     answer?: 'yes' | 'no';
+    day: number;
 }
 
 export interface YesAction {

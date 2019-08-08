@@ -14,5 +14,6 @@ export const createState = (seed: number): State => {
         },
         deck: [deckCard],
         lose: false,
+        day: 1,
     };
 };

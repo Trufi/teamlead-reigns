@@ -56,6 +56,7 @@ const effect = (state: State, effect: CardChoice): State => {
         deck,
         answer: undefined,
         lose: checkLose(scores),
+        day: state.day + 1,
     };
 };
 
