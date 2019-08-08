@@ -1,0 +1,10 @@
+/node_modules
+/dist
+/gemini/dist
+/gemini/reports
+/package-lock.json
+*.yml
+*.yaml
+*.vsh.js
+*.fsh.js
+*.proto.js

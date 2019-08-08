@@ -1,0 +1,45 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.movePart {
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    background: #d7ffd9;
+    border: 1px solid rgb(76, 201, 86);
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.description {
+}
+
+.character {
+    font-style: italic;
+}
+
+.choice {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    text-align: center;
+    background: rgba(62, 232, 70, 0.9);
+    font-size: 18px;
+    font-weight: 700;
+}
