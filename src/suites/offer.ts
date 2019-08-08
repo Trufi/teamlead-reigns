@@ -5,12 +5,6 @@ export const offer: Suite = {
         character: 'Вася',
         description: 'Я ухожу, меня позвали в Google на зарплату х2',
         yes: {
-            description: 'Ну и катись!',
-            scores: {
-                team: -20,
-            },
-        },
-        no: {
             description: 'Поднять зп до х2',
             scores: {
                 money: -20,
@@ -34,6 +28,12 @@ export const offer: Suite = {
                         },
                     },
                 },
+            },
+        },
+        no: {
+            description: 'Ну и катись!',
+            scores: {
+                team: -20,
             },
         },
     },

@@ -7,7 +7,7 @@ export interface CardComponentProps {
     dispatch: Dispatch;
 }
 
-const choiceThreshold = 50;
+const choiceThreshold = 30;
 
 export const CardComponent = ({
     card: { character, description, yes, no },

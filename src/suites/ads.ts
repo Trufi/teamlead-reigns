@@ -12,7 +12,7 @@ export const ads: Suite = {
             },
         },
         no: {
-            description: 'Плохо отразиться на аудитории',
+            description: 'Чёт, перебор',
             scores: {
                 audience: 5,
                 money: -10,
