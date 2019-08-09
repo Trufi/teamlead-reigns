@@ -71,7 +71,7 @@ export const App = () => {
             />
             <CardComponent card={card} dispatch={dispatch} />
             <div style={{ margin: '20px 0 20px', textAlign: 'center' }}>
-                <div style={{ fontSize: '60px', lineHeight: 0.8 }}>{state.day}</div>
+                <div style={{ fontSize: '60px', lineHeight: 0.9 }}>{state.day}</div>
                 <div>day</div>
             </div>
             {state.lose && (

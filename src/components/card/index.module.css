@@ -46,3 +46,16 @@
     font-size: 18px;
     font-weight: 700;
 }
+
+@media (max-width: 350px) {
+    .container {
+        height: 250px;
+    }
+    .movePart {
+        width: 250px;
+        height: 250px;
+    }
+    .choice {
+        width: 250px;
+    }
+}
