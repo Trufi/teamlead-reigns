@@ -70,8 +70,8 @@ export const App = () => {
                 effect={state.answer && card[state.answer].scores}
             />
             <CardComponent card={card} dispatch={dispatch} />
-            <div style={{ margin: '20px 0 15px', textAlign: 'center' }}>
-                <div style={{ fontSize: '60px', lineHeight: 0.7 }}>{state.day}</div>
+            <div style={{ margin: '20px 0 20px', textAlign: 'center' }}>
+                <div style={{ fontSize: '60px', lineHeight: 0.8 }}>{state.day}</div>
                 <div>day</div>
             </div>
             {state.lose && (
