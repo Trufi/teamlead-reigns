@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "52bddab8600bdd6c9eb5ca5075593608",
+    "revision": "53bdcfc7662d1446c19cb000c0c39481",
     "url": "/teamlead-reigns/index.html"
   },
   {
-    "revision": "6819712bd77dc5ace75d",
+    "revision": "36dcdf0e648852953072",
     "url": "/teamlead-reigns/static/css/main.ae088e13.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/teamlead-reigns/static/js/2.8470f991.chunk.js"
   },
   {
-    "revision": "6819712bd77dc5ace75d",
-    "url": "/teamlead-reigns/static/js/main.a878d5ce.chunk.js"
+    "revision": "36dcdf0e648852953072",
+    "url": "/teamlead-reigns/static/js/main.9deb5ea6.chunk.js"
   },
   {
     "revision": "06c2c6d46624db63f9ab",
