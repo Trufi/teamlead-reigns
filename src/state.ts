@@ -1,8 +1,8 @@
 import { State } from './types';
-import { randomDeckCard } from './utils';
+import { randomDeck } from './utils';
 
 export const createState = (seed: number): State => {
-    const [nextSeed, deckCard] = randomDeckCard(seed);
+    const [nextSeed, deck] = randomDeck(seed);
 
     return {
         seed: nextSeed,
@@ -12,7 +12,7 @@ export const createState = (seed: number): State => {
             code: 50,
             team: 50,
         },
-        deck: [deckCard],
+        deck,
         lose: false,
         day: 1,
     };

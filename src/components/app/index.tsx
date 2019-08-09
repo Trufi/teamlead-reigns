@@ -12,7 +12,13 @@ interface ScoresProps {
 
 const ScoresComponent = ({ scores, effect }: ScoresProps) => {
     return (
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '30px' }}>
+        <div
+            style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '10px 30px 20px 30px',
+            }}
+        >
             <div>
                 <Score
                     type={'audience'}
@@ -51,14 +57,21 @@ export const App = () => {
     const card = state.deck[0].card;
 
     return (
-        <div>
+        <div
+            style={{
+                display: 'flex',
+                flexFlow: 'column',
+                justifyContent: 'space-between',
+                height: '100%',
+            }}
+        >
             <ScoresComponent
                 scores={state.scores}
                 effect={state.answer && card[state.answer].scores}
             />
             <CardComponent card={card} dispatch={dispatch} />
-            <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                <div style={{ fontSize: '60px' }}>{state.day}</div>
+            <div style={{ margin: '20px 0 15px', textAlign: 'center' }}>
+                <div style={{ fontSize: '60px', lineHeight: 0.7 }}>{state.day}</div>
                 <div>day</div>
             </div>
             {state.lose && (
@@ -68,7 +81,7 @@ export const App = () => {
                         top: 0,
                         left: 0,
                         width: '100vw',
-                        height: '100vh',
+                        height: '100%',
                         lineHeight: '100vh',
                         textAlign: 'center',
                         fontSize: '70px',

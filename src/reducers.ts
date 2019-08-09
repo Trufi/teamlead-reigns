@@ -5,12 +5,11 @@ import {
     NoAction,
     Scores,
     ScoresEffect,
-    DeckCard,
-    NextCard,
     CardChoice,
     ShowAnswerAction,
 } from './types';
-import { arrayInsert, randomDeckCard, clamp } from './utils';
+import { arrayInsert, clamp, randomDeck } from './utils';
+import { suites } from './suites';
 
 export const reducer = (state: State, action: Action): State => {
     switch (action.type) {
@@ -36,15 +35,15 @@ const effect = (state: State, effect: CardChoice): State => {
     let [{ suite }, ...deck] = state.deck;
 
     if (effect.nextCard) {
-        deck = newDeck(deck, effect.nextCard, suite);
+        deck = arrayInsert(deck, effect.nextCard.skipSteps, { suite, card: effect.nextCard.card });
+    } else {
+        deck = [...deck, { suite, card: suites[suite].startCard }];
     }
 
     let { seed } = state;
 
     if (deck.length === 0) {
-        const res = randomDeckCard(seed);
-        seed = res[0];
-        deck.unshift(res[1]);
+        [seed, deck] = randomDeck(seed);
     }
 
     const scores = newScores(state.scores, effect.scores);
@@ -77,10 +76,6 @@ const newScores = (score: Scores, diff: ScoresEffect): Scores => {
         team: diff.team ? sc(score.team + diff.team) : score.team,
         code: diff.code ? sc(score.code + diff.code) : score.code,
     };
-};
-
-const newDeck = (deck: Array<DeckCard>, newCard: NextCard, suite: string): Array<DeckCard> => {
-    return arrayInsert(deck, newCard.skipSteps, { suite, card: newCard.card });
 };
 
 const checkLose = (scores: Scores): boolean => {

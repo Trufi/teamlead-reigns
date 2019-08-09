@@ -38,7 +38,7 @@ export interface DeckCard {
 export interface State {
     seed: number;
     scores: Scores;
-    deck: Array<DeckCard>;
+    deck: DeckCard[];
     lose: boolean;
     answer?: 'yes' | 'no';
     day: number;

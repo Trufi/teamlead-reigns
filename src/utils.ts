@@ -27,3 +27,24 @@ export const randomDeckCard = (seed: number): [number, DeckCard] => {
     };
     return [nextSeed, deckCard];
 };
+
+export const randomDeck = (seed: number): [number, DeckCard[]] => {
+    const suiteNames = Object.keys(suites);
+    const [nextSeed, rndNames] = randomizeArray(seed, suiteNames);
+    return [nextSeed, rndNames.map((name) => ({ suite: name, card: suites[name].startCard }))];
+};
+
+export const randomizeArray = <T>(seed: number, inArray: T[]): [number, T[]] => {
+    const array = [...inArray];
+
+    for (let i = 0; i < array.length; i++) {
+        const rnd = random(seed);
+        seed = rnd[0];
+        const index = i + Math.floor(rnd[1] * (array.length - i));
+        const t = array[i];
+        array[i] = array[index];
+        array[index] = t;
+    }
+
+    return [seed, array];
+};

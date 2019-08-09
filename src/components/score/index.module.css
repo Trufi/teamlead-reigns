@@ -20,15 +20,15 @@
 
 .volume {
     position: relative;
-    width: 50px;
-    height: 100px;
+    width: 45px;
+    height: 90px;
     background: #fff4d6;
 }
 
 .innerVolume {
     position: absolute;
     bottom: 0;
-    width: 50px;
+    width: 45px;
     background: #ffbb00;
     transition: height 1s;
 }
