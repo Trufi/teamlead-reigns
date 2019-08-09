@@ -33,17 +33,17 @@ export const ccpm: Suite = {
                                         skipSteps: 3,
                                         card: {
                                             description:
-                                                'На последнем планировании вы потратили целый день, чтобы обновить критическую цепь',
+                                                'На последнем планировании команда потратили целый день, чтобы обновить роадмап по методу критической цепи',
                                             yes: {
-                                                description: 'Работа — есть работа',
-                                                scores: {
-                                                    money: -20,
-                                                },
-                                            },
-                                            no: {
                                                 description: 'Да к черту!',
                                                 scores: {
                                                     team: 20,
+                                                },
+                                            },
+                                            no: {
+                                                description: 'Работа — есть работа',
+                                                scores: {
+                                                    money: -20,
                                                 },
                                             },
                                         },
@@ -111,8 +111,7 @@ export const ccpm: Suite = {
         no: {
             description: 'Нет',
             scores: {
-                money: 10,
-                team: 10,
+                team: -5,
             },
         },
     },

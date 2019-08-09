@@ -62,7 +62,7 @@ export const newTech: Suite = {
                 skipSteps: 3,
                 card: {
                     character: 'Федор',
-                    description: 'Хочу попробовать на проекте Elm',
+                    description: 'Хочу попробовать на проекте язык Elm',
                     yes: {
                         description: 'Давай попробуй',
                         scores: {

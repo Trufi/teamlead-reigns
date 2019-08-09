@@ -5,10 +5,11 @@ export const refactor: Suite = {
         character: 'Петя',
         description: 'Я думаю, что нам пора порефакторить работу со стором',
         yes: {
-            description: 'Ты прав',
+            description: 'Давай',
             scores: {
                 code: 20,
                 team: 5,
+                money: -10,
             },
         },
         no: {

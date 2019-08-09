@@ -35,7 +35,8 @@ export const junior: Suite = {
                 skipSteps: 3,
                 card: {
                     character: 'Петя',
-                    description: 'Андрей пишет какой-то непонятный код',
+                    description:
+                        'Андрей пишет какой-то непонятный код и говорит, что это мультипликативные функтор',
                     yes: {
                         description: 'Пусть учится',
                         scores: {
