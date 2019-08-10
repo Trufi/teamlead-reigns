@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    padding: 20px;
+    background: #d7ffd9;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.description {
+}
+
+.character {
+    font-style: italic;
+}
