@@ -3,14 +3,18 @@ import { Card } from '../../../../src/types';
 import styles from './index.module.css';
 
 export interface CardComponentProps {
-    card: Card;
+    card: Card | undefined;
 }
 
 export const CardComponent = ({ card }: CardComponentProps) => {
-    return (
-        <div className={styles.container}>
-            <div className={styles.description}>{card.description}</div>
-            <div className={styles.character}>{card.character}</div>
-        </div>
-    );
+    if (card) {
+        return (
+            <div className={styles.container}>
+                <div className={styles.description}>{card.description}</div>
+                <div className={styles.character}>{card.character}</div>
+            </div>
+        );
+    }
+
+    return <div className={styles.container}></div>;
 };

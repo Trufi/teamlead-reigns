@@ -4,93 +4,113 @@ import { createState } from '../../state';
 import { Card } from '../../../../src/types';
 import { CardComponent } from '../card';
 
-interface ColumnProps {
-    data: Array<ColumnCard>;
-    maxLen: number;
-}
-
 const cardSize = 350;
-
-const Column = ({ data }: ColumnProps) => {
-    return (
-        <div
-            style={{
-                position: 'relative',
-                width: `${cardSize}px`,
-            }}
-        >
-            {data.map((cc, index) => (
-                <div
-                    style={{
-                        position: 'absolute',
-                        left: 0,
-                        top: `${Math.max(cc.parentIndex, index) * cardSize}px`,
-                    }}
-                >
-                    {cc.parentIndex} - {index}
-                    <CardComponent card={cc.card} key={index} />
-                </div>
-            ))}
-        </div>
-    );
-};
 
 export const App = () => {
     const [state] = useReducer(reducer, createState());
 
     const suite = state.suites[state.currentSuite];
 
-    const columns = cardToColumns(suite.startCard);
-
-    let maxLen = 0;
-    columns.forEach((c) => (maxLen = Math.max(c.length, maxLen)));
+    const data = cardToColumns(suite.startCard);
 
     return (
-        <div>
-            <div style={{ display: 'flex', width: `${cardSize * columns.length}px` }}>
-                {columns.map((c, index) => (
-                    <Column data={c} maxLen={maxLen} key={index} />
+        <div
+            style={{
+                position: 'relative',
+            }}
+        >
+            <div>
+                width: {data.width}, height: {data.height}
+            </div>
+            <div
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: `${data.width}px`,
+                    height: `${data.height}px`,
+                }}
+            >
+                {data.cards.map((cc, index) => (
+                    <div
+                        style={{
+                            position: 'absolute',
+                            left: `${cc.x}px`,
+                            top: `${cc.y}px`,
+                            margin: `${-cardSize / 2}px 0 0 ${-cardSize / 2}px`,
+                        }}
+                    >
+                        <CardComponent card={cc.card} key={index} />
+                    </div>
                 ))}
             </div>
-            <pre>
-                <code>{JSON.stringify(state, null, 2)}</code>
-            </pre>
         </div>
     );
 };
 
-interface ColumnCard {
-    card: Card;
-    parentIndex: number;
+interface MarkedColumn {
+    x: number;
+    y: number;
+    card: Card | undefined;
 }
 
-const cardToColumns = (card: Card): Array<ColumnCard[]> => {
-    const columns: Array<ColumnCard[]> = [];
+const cardToColumns = (card: Card) => {
+    const columns: Array<Array<Card | undefined>> = [];
 
-    columns[0] = [{ card, parentIndex: 0 }];
+    columns[0] = [card];
+    let needNext = true;
+    let i = 1;
 
-    cardToColumnsIter(card, columns, 1, 0);
+    do {
+        columns[i] = [];
+        needNext = iterator(columns[i - 1], columns[i]);
+        i++;
+    } while (needNext);
 
-    return columns;
+    const maxLen = columns[columns.length - 1].length;
+    const height = maxLen * cardSize;
+    const markedCards: MarkedColumn[] = [];
+
+    columns.forEach((column, columnIndex) => {
+        column.forEach((card, cardIndex) => {
+            markedCards.push({
+                card,
+                x: (0.5 + columnIndex) * cardSize,
+                y: (maxLen / column.length) * (0.5 + cardIndex) * cardSize,
+            });
+        });
+    });
+
+    return {
+        cards: markedCards,
+        height,
+        width: columns.length * cardSize,
+    };
 };
 
-const cardToColumnsIter = (
-    card: Card,
-    columns: Array<Array<ColumnCard>>,
-    index: number,
-    parentIndex: number,
-) => {
-    if (!columns[index]) {
-        columns[index] = [];
-    }
+const iterator = (prevColumn: Array<Card | undefined>, currentColumn: Array<Card | undefined>) => {
+    let hasNextCard = false;
 
-    if (card.yes.nextCard) {
-        const cardIndex = columns[index].push({ card: card.yes.nextCard.card, parentIndex }) - 1;
-        cardToColumnsIter(card.yes.nextCard.card, columns, index + 1, cardIndex);
-    }
+    prevColumn.forEach((card) => {
+        if (card) {
+            if (card.yes.nextCard) {
+                currentColumn.push(card.yes.nextCard.card);
+                hasNextCard = true;
+            } else {
+                currentColumn.push(undefined);
+            }
 
-    if (card.no.nextCard) {
-        const cardIndex = columns[index].push({ card: card.no.nextCard.card, parentIndex }) - 1;
-        cardToColumnsIter(card.no.nextCard.card, columns, index + 1, cardIndex);
-    }
+            if (card.no.nextCard) {
+                currentColumn.push(card.no.nextCard.card);
+                hasNextCard = true;
+            } else {
+                currentColumn.push(undefined);
+            }
+        } else {
+            currentColumn.push(undefined);
+            currentColumn.push(undefined);
+        }
+    });
+
+    return hasNextCard;
 };
