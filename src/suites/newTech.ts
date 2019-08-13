@@ -12,6 +12,7 @@ export const newTech: Suite = {
             nextCard: {
                 skipSteps: 3,
                 card: {
+                    character: 'Лена, аналитик',
                     description: 'Пора нанимать нового разработчика со знанием Reason',
                     yes: {
                         description: 'Вперед!',
@@ -21,9 +22,9 @@ export const newTech: Suite = {
                         nextCard: {
                             skipSteps: 3,
                             card: {
-                                character: 'Лиза, hr',
+                                character: 'Лиза, HR',
                                 description:
-                                    'Мы нашли разработчика со знанием Reason, но он хочет в полтора раза больше зп и полную удаленку, берем?',
+                                    'Мы нашли разработчика со знанием Reason, но он привык к зарплате в полтора раз выше, берем?',
                                 yes: {
                                     description: 'Берем',
                                     scores: {
@@ -71,6 +72,7 @@ export const newTech: Suite = {
                         nextCard: {
                             skipSteps: 3,
                             card: {
+                                character: 'Лена, аналитик',
                                 description: 'Пора искать нового разработчика со знанием Elm',
                                 yes: {
                                     description: 'Ищем',
@@ -80,7 +82,7 @@ export const newTech: Suite = {
                                     nextCard: {
                                         skipSteps: 3,
                                         card: {
-                                            character: 'Лиза, hr',
+                                            character: 'Лиза, HR',
                                             description:
                                                 'На рынке нет разрабов со знанием Elm, берем обычного со знанием JS?',
                                             yes: {
