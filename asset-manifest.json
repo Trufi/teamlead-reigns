@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/teamlead-reigns/static/css/main.ed83e654.chunk.css",
-    "main.js": "/teamlead-reigns/static/js/main.e5cb69b1.chunk.js",
-    "main.js.map": "/teamlead-reigns/static/js/main.e5cb69b1.chunk.js.map",
+    "main.js": "/teamlead-reigns/static/js/main.32e13cc1.chunk.js",
+    "main.js.map": "/teamlead-reigns/static/js/main.32e13cc1.chunk.js.map",
     "runtime~main.js": "/teamlead-reigns/static/js/runtime~main.11e54acd.js",
     "runtime~main.js.map": "/teamlead-reigns/static/js/runtime~main.11e54acd.js.map",
     "static/js/2.da7e12b2.chunk.js": "/teamlead-reigns/static/js/2.da7e12b2.chunk.js",
     "static/js/2.da7e12b2.chunk.js.map": "/teamlead-reigns/static/js/2.da7e12b2.chunk.js.map",
     "index.html": "/teamlead-reigns/index.html",
-    "precache-manifest.f42567aefdf7bebaeb3d2992fc93cf22.js": "/teamlead-reigns/precache-manifest.f42567aefdf7bebaeb3d2992fc93cf22.js",
+    "precache-manifest.c8d3dac41d3c2ec7197aaa323a71d40a.js": "/teamlead-reigns/precache-manifest.c8d3dac41d3c2ec7197aaa323a71d40a.js",
     "service-worker.js": "/teamlead-reigns/service-worker.js",
     "static/css/main.ed83e654.chunk.css.map": "/teamlead-reigns/static/css/main.ed83e654.chunk.css.map"
   }
