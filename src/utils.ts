@@ -11,6 +11,7 @@ export const arrayInsert = <T>(array: T[], index: number, newItem: T): T[] => [
     newItem,
     ...array.slice(index),
 ];
+
 export const clamp = (value: number, min: number, max: number) => {
     value = Math.max(value, min);
     value = Math.min(value, max);

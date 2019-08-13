@@ -5,5 +5,5 @@ body,
     width: 100%;
     max-width: 500px;
     height: 100%;
-    font-family: Menlo, Monaco, 'Courier New', monospace;
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

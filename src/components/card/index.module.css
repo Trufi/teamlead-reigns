@@ -47,6 +47,24 @@
     font-weight: 700;
 }
 
+.choiceEnter {
+    opacity: 0;
+}
+
+.choiceEnterActive {
+    opacity: 1;
+    transition: opacity 200ms;
+}
+
+.choiceExit {
+    opacity: 1;
+}
+
+.choiceExitActive {
+    opacity: 0;
+    transition: opacity 50ms;
+}
+
 @media (max-width: 350px) {
     .container {
         height: 250px;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { Card, Dispatch } from '../../types';
 import styles from './index.module.css';
 
@@ -116,12 +117,11 @@ export const CardComponent = ({
     const angle = Math.asin(x / R);
     const y = Math.sqrt(R * R - x * x);
 
-    let choice: JSX.Element | undefined;
-
+    let choiceDesc = '';
     if (state.move[0] > choiceThreshold) {
-        choice = <div className={styles.choice}>{yes.description}</div>;
+        choiceDesc = yes.description;
     } else if (state.move[0] < -choiceThreshold) {
-        choice = <div className={styles.choice}>{no.description}</div>;
+        choiceDesc = no.description;
     }
 
     return (
@@ -140,7 +140,22 @@ export const CardComponent = ({
                 {/* <div>
                     {state.move[0]} - {state.move[1]} - {y} - {angle}
                 </div> */}
-                {choice}
+                <CSSTransition
+                    classNames={{
+                        enter: styles.choiceEnter,
+                        enterActive: styles.choiceEnterActive,
+                        exit: styles.choiceExit,
+                        exitActive: styles.choiceExitActive,
+                    }}
+                    timeout={{
+                        enter: 200,
+                        exit: 50,
+                    }}
+                    in={choiceDesc.length !== 0}
+                    unmountOnExit
+                >
+                    <div className={styles.choice}>{choiceDesc}</div>
+                </CSSTransition>
                 {character && <div className={styles.character}>{character}</div>}
             </div>
         </div>
