@@ -2,7 +2,7 @@ import { Suite } from '../types';
 
 export const refactor: Suite = {
     startCard: {
-        character: 'Петя',
+        character: 'Петя, сеньор',
         description: 'Я думаю, что нам пора порефакторить работу со стором',
         yes: {
             description: 'Давай',

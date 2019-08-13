@@ -2,7 +2,7 @@ import { Suite } from '../types';
 
 export const ads: Suite = {
     startCard: {
-        character: 'Лена',
+        character: 'Лена, аналитик',
         description: 'Повесим рекламный баннер на входе?',
         yes: {
             description: 'Деньги — нужны',

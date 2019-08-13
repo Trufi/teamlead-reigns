@@ -2,27 +2,66 @@ import { Suite } from '../types';
 
 export const offer: Suite = {
     startCard: {
-        character: 'Вася',
-        description: 'Я ухожу, меня позвали в Google на зарплату х2',
+        character: 'Вася, мухожук',
+        description: 'Я ухожу, меня позвали в Nanosoft с увеличением зарплаты на 20%',
         yes: {
-            description: 'Поднять зп до х2',
+            description: 'Поднять зарплату',
             scores: {
-                money: -20,
+                money: -10,
             },
             nextCard: {
                 skipSteps: 3,
                 card: {
-                    character: 'Петя',
+                    character: 'Вася, мухожук',
                     description:
-                        'Почему Васе подняли зарплату, а мне нет? Он делает в 2 раза меньше меня!',
+                        'Друг предложил мне работать в Pear, я подумал и ухожу, там зарплата на 50% выше',
                     yes: {
-                        description: 'Поднять зп Пете',
+                        description: 'Поднять зарплату',
                         scores: {
-                            money: -20,
+                            money: -15,
+                        },
+                        nextCard: {
+                            skipSteps: 3,
+                            card: {
+                                character: 'Вася, мухожук',
+                                description: 'Ухожу. Hooli. x2.',
+                                yes: {
+                                    description: 'Поднять зарплату до х2',
+                                    scores: {
+                                        money: -20,
+                                    },
+                                    nextCard: {
+                                        skipSteps: 3,
+                                        card: {
+                                            character: 'Петя, сеньор',
+                                            description:
+                                                'Почему Васе подняли зарплату, а мне нет? Он делает в 2 раза меньше меня!',
+                                            yes: {
+                                                description: 'Поднять зарплату Пете',
+                                                scores: {
+                                                    money: -20,
+                                                },
+                                            },
+                                            no: {
+                                                description: 'У Васи сложная ситуация',
+                                                scores: {
+                                                    team: -10,
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                                no: {
+                                    description: 'Ну и катись!',
+                                    scores: {
+                                        team: -20,
+                                    },
+                                },
+                            },
                         },
                     },
                     no: {
-                        description: 'У Васи сложная ситуация',
+                        description: 'Ну, удачи',
                         scores: {
                             team: -10,
                         },
@@ -31,9 +70,9 @@ export const offer: Suite = {
             },
         },
         no: {
-            description: 'Ну и катись!',
+            description: 'Прощай',
             scores: {
-                team: -20,
+                team: -10,
             },
         },
     },

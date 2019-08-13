@@ -2,7 +2,7 @@ import { Suite } from '../types';
 
 export const junior: Suite = {
     startCard: {
-        character: 'Антон',
+        character: 'Антон, джуниор',
         description: 'А тебе, что больше нравится: ООП или ФП?',
         yes: {
             description: 'ООП',
@@ -10,7 +10,7 @@ export const junior: Suite = {
             nextCard: {
                 skipSteps: 3,
                 card: {
-                    character: 'Андрей',
+                    character: 'Андрей, джуниор',
                     description: 'Я сделал тройное наследование с абстрактным классом',
                     yes: {
                         description: 'Попробуй примеси',
@@ -34,7 +34,7 @@ export const junior: Suite = {
             nextCard: {
                 skipSteps: 3,
                 card: {
-                    character: 'Петя',
+                    character: 'Петя, сеньор',
                     description:
                         'Андрей пишет какой-то непонятный код и говорит, что это мультипликативные функтор',
                     yes: {

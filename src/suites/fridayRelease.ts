@@ -2,7 +2,7 @@ import { Suite } from '../types';
 
 export const fridayRelease: Suite = {
     startCard: {
-        character: 'Лена',
+        character: 'Лена, аналитик',
         description: 'Мы готовы зарелизить новую фичу, но сегодня пятница, отложим?',
         yes: {
             description: 'Да',
