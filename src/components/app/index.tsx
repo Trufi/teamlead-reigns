@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import { reducer } from '../../reducers';
 import { createState } from '../../state';
-import { Scores, ScoresEffect } from '../../types';
+import { Scores, ScoresEffect, State } from '../../types';
 import { Score } from '../score';
 import { CardComponent } from '../card';
 
@@ -52,10 +52,21 @@ const ScoresComponent = ({ scores, effect }: ScoresProps) => {
 };
 
 export const App = () => {
-    const [state, dispatch] = useReducer(
-        reducer,
-        createState(Math.round(Math.random() * 2147483647)),
-    );
+    let initialState = createState(Math.round(Math.random() * 2147483647));
+
+    const storageItem = localStorage && localStorage.getItem('reigns');
+    if (storageItem) {
+        const storageState = JSON.parse(storageItem) as State;
+        if (!storageState.lose) {
+            initialState = storageState;
+        }
+    }
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    if (localStorage) {
+        localStorage.setItem('reigns', JSON.stringify(state));
+    }
 
     const card = state.deck[0].card;
 
