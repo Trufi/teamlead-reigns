@@ -38,6 +38,7 @@ export interface DeckCard {
 export interface State {
     seed: number;
     scores: Scores;
+    previusCard?: Card;
     deck: DeckCard[];
     lose: boolean;
     answer?: 'yes' | 'no';

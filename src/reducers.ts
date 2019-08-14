@@ -32,7 +32,7 @@ const showAnswer = (state: State, { answer }: ShowAnswerAction): State => {
 };
 
 const effect = (state: State, effect: CardChoice): State => {
-    let [{ suite }, ...deck] = state.deck;
+    let [{ suite, card }, ...deck] = state.deck;
 
     if (effect.nextCard) {
         deck = arrayInsert(deck, effect.nextCard.skipSteps, { suite, card: effect.nextCard.card });
@@ -56,6 +56,7 @@ const effect = (state: State, effect: CardChoice): State => {
         answer: undefined,
         lose: checkLose(scores),
         day: state.day + 1,
+        previusCard: card,
     };
 };
 

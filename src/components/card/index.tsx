@@ -1,24 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition, TransitionGroup, Transition } from 'react-transition-group';
 import { Card, Dispatch } from '../../types';
 import styles from './index.module.css';
 
 export interface CardComponentProps {
+    previusCard?: Card;
     card: Card;
     dispatch: Dispatch;
 }
 
 const choiceThreshold = 30;
 
-export const CardComponent = ({
-    card: { character, description, yes, no },
-    dispatch,
-}: CardComponentProps) => {
-    const [state, setState] = useState({
+interface CardComponentState {
+    down: boolean;
+    start: number[];
+    move: number[];
+    prevCard?: {
+        start: number[];
+        move: number[];
+        card: Card;
+    };
+}
+
+export const CardComponent = ({ card, previusCard, dispatch }: CardComponentProps) => {
+    const [state, setState] = useState<CardComponentState>({
         down: false,
         start: [0, 0],
         move: [0, 0],
     });
+
+    const { character, description, yes, no } = card;
 
     const onMouseDown = (ev: React.MouseEvent) => {
         ev.preventDefault();
@@ -44,10 +55,12 @@ export const CardComponent = ({
             return;
         }
 
+        let answer: 'yes' | 'no' | undefined;
+
         if (state.move[0] > choiceThreshold) {
-            dispatch({ type: 'yes' });
+            answer = 'yes';
         } else if (state.move[0] < -choiceThreshold) {
-            dispatch({ type: 'no' });
+            answer = 'no';
         }
 
         setState({
@@ -55,7 +68,18 @@ export const CardComponent = ({
             down: false,
             start: [0, 0],
             move: [0, 0],
+            prevCard: answer
+                ? {
+                      start: state.start,
+                      move: state.move,
+                      card,
+                  }
+                : state.prevCard,
         });
+
+        if (answer) {
+            dispatch({ type: answer } as any);
+        }
     };
 
     const onMouseMove = (ev: React.MouseEvent) => {
@@ -109,14 +133,6 @@ export const CardComponent = ({
         };
     });
 
-    const R = 500;
-    const x = state.move[0];
-    // x^2 + y^2 = R^2
-    // y = \/r^2 - x^2
-    // x = sinA * R
-    const angle = Math.asin(x / R);
-    const y = Math.sqrt(R * R - x * x);
-
     let choiceDesc = '';
     if (state.move[0] > choiceThreshold) {
         choiceDesc = yes.description;
@@ -124,8 +140,56 @@ export const CardComponent = ({
         choiceDesc = no.description;
     }
 
+    const prevCardOnEntered = () => {
+        setTimeout(() => {
+            setState({
+                ...state,
+                prevCard: undefined,
+            });
+        }, 2000);
+    };
+
+    let prevCard: JSX.Element | undefined;
+    if (state.prevCard) {
+        const { description, character } = state.prevCard.card;
+        const { R, y, angle, x } = getPos(state.prevCard.move[0]);
+
+        const transitionStyles = {
+            // entering: {
+            //     transform: `translate(0px, 500px)`,
+            // },
+            entered: {
+                transform: `translate(${x}px, ${R - y + 3000}px) rotate(${angle +
+                    Math.sign(angle) * 1000}rad)`,
+            },
+            exited: {
+                transform: `translate(${x}px, ${R - y}px) rotate(${angle}rad)`,
+            },
+        } as any;
+
+        prevCard = (
+            <Transition timeout={0} onEntered={prevCardOnEntered}>
+                {(s) => (
+                    <div
+                        className={styles.previusCard}
+                        style={{
+                            transform: `translate(${x}px, ${R - y}px) rotate(${angle}rad)`,
+                            ...transitionStyles[s],
+                        }}
+                    >
+                        <div className={styles.description}>{description}</div>
+                        {character && <div className={styles.character}>{character}</div>}
+                    </div>
+                )}
+            </Transition>
+        );
+    }
+
+    const { R, y, angle } = getPos(state.move[0]);
+
     return (
         <div className={styles.container}>
+            <TransitionGroup component={null}>{prevCard}</TransitionGroup>
             <div
                 className={styles.movePart}
                 onMouseDown={onMouseDown}
@@ -161,3 +225,18 @@ export const CardComponent = ({
         </div>
     );
 };
+
+function getPos(x: number) {
+    const R = 500;
+    // x^2 + y^2 = R^2
+    // y = \/r^2 - x^2
+    // x = sinA * R
+    const angle = Math.asin(x / R);
+    const y = Math.sqrt(R * R - x * x);
+    return {
+        y,
+        angle,
+        R,
+        x,
+    };
+}
