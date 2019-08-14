@@ -52,7 +52,10 @@ const ScoresComponent = ({ scores, effect }: ScoresProps) => {
 };
 
 export const App = () => {
-    const [state, dispatch] = useReducer(reducer, createState(1));
+    const [state, dispatch] = useReducer(
+        reducer,
+        createState(Math.round(Math.random() * 2147483647)),
+    );
 
     const card = state.deck[0].card;
 
