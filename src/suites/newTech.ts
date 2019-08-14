@@ -2,7 +2,7 @@ import { Suite } from '../types';
 
 export const newTech: Suite = {
     startCard: {
-        character: 'Федор, активный',
+        character: 'Федор, новатор',
         description: 'Хочу для нового модуля использовать Reason',
         yes: {
             description: 'Попробуй',
@@ -62,7 +62,7 @@ export const newTech: Suite = {
             nextCard: {
                 skipSteps: 3,
                 card: {
-                    character: 'Федор, активный',
+                    character: 'Федор, новатор',
                     description: 'Хочу попробовать на проекте язык Elm',
                     yes: {
                         description: 'Давай попробуй',
