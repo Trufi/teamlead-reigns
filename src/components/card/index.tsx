@@ -124,41 +124,47 @@ export const CardComponent = ({
         choiceDesc = no.description;
     }
 
+    const style = state.down
+        ? {
+              transform: `translate(${state.move[0]}px, ${R - y}px) rotate(${angle}rad)`,
+          }
+        : {};
+
     return (
-        <div className={styles.container}>
-            <div
-                // TODO: key переделать на uuid
-                key={description.slice(0, 10)}
-                className={styles.movePart}
-                onMouseDown={onMouseDown}
-                onMouseMove={onMouseMove}
-                onTouchStart={onTouchStart}
-                onTouchMove={onTouchMove}
-                style={{
-                    transform: `translate(${state.move[0]}px, ${R - y}px) rotate(${angle}rad)`,
-                }}
-            >
-                <div className={styles.description}>{description}</div>
-                {/* <div>
-                    {state.move[0]} - {state.move[1]} - {y} - {angle}
-                </div> */}
-                <CSSTransition
-                    classNames={{
-                        enter: styles.choiceEnter,
-                        enterActive: styles.choiceEnterActive,
-                        exit: styles.choiceExit,
-                        exitActive: styles.choiceExitActive,
-                    }}
-                    timeout={{
-                        enter: 200,
-                        exit: 50,
-                    }}
-                    in={choiceDesc.length !== 0}
-                    unmountOnExit
+        <div
+            className={styles.container}
+            // TODO: key переделать на uuid
+            key={description.slice(0, 10)}
+        >
+            <div className={styles.cont2}>
+                <div className={styles.shirt} />
+                <div
+                    className={styles.movePart}
+                    onMouseDown={onMouseDown}
+                    onMouseMove={onMouseMove}
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    style={style}
                 >
-                    <div className={styles.choice}>{choiceDesc}</div>
-                </CSSTransition>
-                {character && <div className={styles.character}>{character}</div>}
+                    <div className={styles.description}>{description}</div>
+                    <CSSTransition
+                        classNames={{
+                            enter: styles.choiceEnter,
+                            enterActive: styles.choiceEnterActive,
+                            exit: styles.choiceExit,
+                            exitActive: styles.choiceExitActive,
+                        }}
+                        timeout={{
+                            enter: 200,
+                            exit: 50,
+                        }}
+                        in={choiceDesc.length !== 0}
+                        unmountOnExit
+                    >
+                        <div className={styles.choice}>{choiceDesc}</div>
+                    </CSSTransition>
+                    {character && <div className={styles.character}>{character}</div>}
+                </div>
             </div>
         </div>
     );

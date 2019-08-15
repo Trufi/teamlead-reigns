@@ -5,17 +5,50 @@
     height: 300px;
 }
 
-@keyframes show {
+@keyframes shirtHide {
     from {
-        opacity: 0;
+        transform: scaleX(1);
     }
     to {
-        opacity: 1;
+        transform: scaleX(0);
+    }
+}
+
+.cont2 {
+    width: 300px;
+    height: 300px;
+    animation: shirtHide 1s;
+}
+
+@keyframes shirtHide {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(0);
+    }
+}
+
+.shirt {
+    position: absolute;
+    height: 300px;
+    background: #929292;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+@keyframes show {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
     }
 }
 
 .movePart {
     position: absolute;
+    z-index: 10;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
@@ -29,7 +62,8 @@
     user-select: none;
     box-sizing: border-box;
     touch-action: none;
-    animation: show 1s;
+    animation: show 1s 1s forwards;
+    transform: scaleX(0);
 }
 
 .description {
