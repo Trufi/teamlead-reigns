@@ -20,7 +20,7 @@ export const ccpm: Suite = {
                         nextCard: {
                             skipSteps: 3,
                             card: {
-                                character: 'Вася',
+                                character: 'Артем',
                                 description:
                                     'Я потратил 2 часа на заполнение колбасок, какой черта?',
                                 yes: {

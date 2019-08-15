@@ -2,7 +2,7 @@ import { Suite } from '../types';
 
 export const offer: Suite = {
     startCard: {
-        character: 'Вася, мухожук',
+        character: 'Артем, мухожук',
         description: 'Я ухожу, меня позвали в Nanosoft с увеличением зарплаты на 20%',
         yes: {
             description: 'Поднять зарплату',
@@ -12,7 +12,7 @@ export const offer: Suite = {
             nextCard: {
                 skipSteps: 3,
                 card: {
-                    character: 'Вася, мухожук',
+                    character: 'Артем, мухожук',
                     description:
                         'Друг предложил мне работать в Pear, я подумал и ухожу, там зарплата на 50% выше',
                     yes: {
@@ -23,7 +23,7 @@ export const offer: Suite = {
                         nextCard: {
                             skipSteps: 3,
                             card: {
-                                character: 'Вася, мухожук',
+                                character: 'Артем, мухожук',
                                 description: 'Ухожу. Hooli. x2.',
                                 yes: {
                                     description: 'Поднять зарплату до х2',
