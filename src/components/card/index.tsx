@@ -127,6 +127,8 @@ export const CardComponent = ({
     return (
         <div className={styles.container}>
             <div
+                // TODO: key переделать на uuid
+                key={description.slice(0, 10)}
                 className={styles.movePart}
                 onMouseDown={onMouseDown}
                 onMouseMove={onMouseMove}
