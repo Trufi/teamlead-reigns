@@ -138,27 +138,27 @@ export const CardComponent = ({
                     transform: `translate(${state.move[0]}px, ${R - y}px) rotate(${angle}rad)`,
                 }}
             >
-                <div className={styles.description}>{description}</div>
-                {/* <div>
-                    {state.move[0]} - {state.move[1]} - {y} - {angle}
-                </div> */}
-                <CSSTransition
-                    classNames={{
-                        enter: styles.choiceEnter,
-                        enterActive: styles.choiceEnterActive,
-                        exit: styles.choiceExit,
-                        exitActive: styles.choiceExitActive,
-                    }}
-                    timeout={{
-                        enter: 200,
-                        exit: 50,
-                    }}
-                    in={choiceDesc.length !== 0}
-                    unmountOnExit
-                >
-                    <div className={styles.choice}>{choiceDesc}</div>
-                </CSSTransition>
-                {character && <div className={styles.character}>{character}</div>}
+                <div className={styles.content}>
+                    <div className={styles.description}>{description}</div>
+                    <CSSTransition
+                        classNames={{
+                            enter: styles.choiceEnter,
+                            enterActive: styles.choiceEnterActive,
+                            exit: styles.choiceExit,
+                            exitActive: styles.choiceExitActive,
+                        }}
+                        timeout={{
+                            enter: 200,
+                            exit: 50,
+                        }}
+                        in={choiceDesc.length !== 0}
+                        unmountOnExit
+                    >
+                        <div className={styles.choice}>{choiceDesc}</div>
+                    </CSSTransition>
+                    {character && <div className={styles.character}>{character}</div>}
+                </div>
+                <div className={styles.shirt} />
             </div>
         </div>
     );
