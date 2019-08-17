@@ -98,24 +98,7 @@
     background: rgba(62, 232, 70, 0.9);
     font-size: 18px;
     font-weight: 700;
-}
-
-.choiceEnter {
-    opacity: 0;
-}
-
-.choiceEnterActive {
-    opacity: 1;
-    transition: opacity 200ms;
-}
-
-.choiceExit {
-    opacity: 1;
-}
-
-.choiceExitActive {
-    opacity: 0;
-    transition: opacity 50ms;
+    animation: show 0.2s;
 }
 
 @media (max-width: 350px) {

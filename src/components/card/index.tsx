@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import { Card, Dispatch } from '../../types';
 import styles from './index.module.css';
 
@@ -140,22 +139,7 @@ export const CardComponent = ({
             >
                 <div className={styles.content}>
                     <div className={styles.description}>{description}</div>
-                    <CSSTransition
-                        classNames={{
-                            enter: styles.choiceEnter,
-                            enterActive: styles.choiceEnterActive,
-                            exit: styles.choiceExit,
-                            exitActive: styles.choiceExitActive,
-                        }}
-                        timeout={{
-                            enter: 200,
-                            exit: 50,
-                        }}
-                        in={choiceDesc.length !== 0}
-                        unmountOnExit
-                    >
-                        <div className={styles.choice}>{choiceDesc}</div>
-                    </CSSTransition>
+                    {choiceDesc.length !== 0 && <div className={styles.choice}>{choiceDesc}</div>}
                     {character && <div className={styles.character}>{character}</div>}
                 </div>
                 <div className={styles.shirt} />
