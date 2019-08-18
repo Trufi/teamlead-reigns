@@ -2,22 +2,81 @@ import React, { useState, useEffect } from 'react';
 import { Card, Dispatch } from '../../types';
 import styles from './index.module.css';
 
+const choiceThreshold = 30;
+
+interface PrevCard {
+    x: number;
+    y: number;
+    angle: number;
+    card: Card;
+}
+
+const PrevCardComponent = ({ data: { card, x, y, angle } }: { data: PrevCard }) => {
+    const [position, setPosition] = useState({ x, y, angle });
+    const { description, character } = card;
+
+    useEffect(() => {
+        // TODO: переделать на что-то более нормальное, чем setTimeout
+        const timeout = setTimeout(() => {
+            setPosition({
+                x: position.x + Math.sign(position.x) * 500,
+                y: position.y + 1000,
+                angle: position.angle + Math.sign(position.x) * 4,
+            });
+        }, 20);
+
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [position.x, position.y, position.angle]);
+
+    return (
+        <div
+            className={styles.prevCard}
+            style={{
+                transform: `translate(${position.x}px, ${position.y}px) rotate(${
+                    position.angle
+                }rad)`,
+            }}
+        >
+            <div className={styles.description}>{description}</div>
+            {character && <div className={styles.character}>{character}</div>}
+        </div>
+    );
+};
+
+const CardContent = ({ card, x }: { card: Card; x: number }) => {
+    const choice = getChoice(x);
+
+    return (
+        <div className={styles.content}>
+            <div className={styles.description}>{card.description}</div>
+            {choice && <div className={styles.choice}>{card[choice].description}</div>}
+            {card.character && <div className={styles.character}>{card.character}</div>}
+        </div>
+    );
+};
+
 export interface CardComponentProps {
     card: Card;
     dispatch: Dispatch;
 }
 
-const choiceThreshold = 30;
+export interface CardComponentState {
+    down: boolean;
+    start: number[];
+    move: number[];
+    prevCard?: PrevCard;
+}
 
-export const CardComponent = ({
-    card: { character, description, yes, no },
-    dispatch,
-}: CardComponentProps) => {
-    const [state, setState] = useState({
+export const CardComponent = ({ card, dispatch }: CardComponentProps) => {
+    const [state, setState] = useState<CardComponentState>({
         down: false,
         start: [0, 0],
         move: [0, 0],
     });
+
+    const { x, y, angle } = getCardPosition(state.move[0]);
 
     const onMouseDown = (ev: React.MouseEvent) => {
         ev.preventDefault();
@@ -43,18 +102,19 @@ export const CardComponent = ({
             return;
         }
 
-        if (state.move[0] > choiceThreshold) {
-            dispatch({ type: 'yes' });
-        } else if (state.move[0] < -choiceThreshold) {
-            dispatch({ type: 'no' });
-        }
+        const choice = getChoice(state.move[0]);
 
         setState({
             ...state,
             down: false,
             start: [0, 0],
             move: [0, 0],
+            prevCard: choice ? { x, y, angle, card } : undefined,
         });
+
+        if (choice) {
+            dispatch({ type: choice });
+        }
     };
 
     const onMouseMove = (ev: React.MouseEvent) => {
@@ -64,13 +124,7 @@ export const CardComponent = ({
             return;
         }
 
-        if (state.move[0] > choiceThreshold) {
-            dispatch({ type: 'showAnswer', answer: 'yes' });
-        } else if (state.move[0] < -choiceThreshold) {
-            dispatch({ type: 'showAnswer', answer: 'no' });
-        } else {
-            dispatch({ type: 'showAnswer', answer: undefined });
-        }
+        dispatch({ type: 'showAnswer', answer: getChoice(state.move[0]) });
 
         setState({
             ...state,
@@ -84,13 +138,7 @@ export const CardComponent = ({
             return;
         }
 
-        if (state.move[0] > choiceThreshold) {
-            dispatch({ type: 'showAnswer', answer: 'yes' });
-        } else if (state.move[0] < -choiceThreshold) {
-            dispatch({ type: 'showAnswer', answer: 'no' });
-        } else {
-            dispatch({ type: 'showAnswer', answer: undefined });
-        }
+        dispatch({ type: 'showAnswer', answer: getChoice(state.move[0]) });
 
         const touch = ev.touches[0];
         setState({
@@ -108,42 +156,53 @@ export const CardComponent = ({
         };
     });
 
-    const R = 500;
-    const x = state.move[0];
-    // x^2 + y^2 = R^2
-    // y = \/r^2 - x^2
-    // x = sinA * R
-    const angle = Math.asin(x / R);
-    const y = Math.sqrt(R * R - x * x);
-
-    let choiceDesc = '';
-    if (state.move[0] > choiceThreshold) {
-        choiceDesc = yes.description;
-    } else if (state.move[0] < -choiceThreshold) {
-        choiceDesc = no.description;
-    }
-
     return (
         <div className={styles.container}>
+            {state.prevCard && (
+                <PrevCardComponent
+                    data={state.prevCard}
+                    key={state.prevCard.card.description.slice(0, 9)}
+                />
+            )}
             <div
                 // TODO: key переделать на uuid
-                key={description.slice(0, 10)}
+                key={card.description.slice(0, 10)}
                 className={styles.movePart}
                 onMouseDown={onMouseDown}
                 onMouseMove={onMouseMove}
                 onTouchStart={onTouchStart}
                 onTouchMove={onTouchMove}
                 style={{
-                    transform: `translate(${state.move[0]}px, ${R - y}px) rotate(${angle}rad)`,
+                    transform: `translate(${x}px, ${y}px) rotate(${angle}rad)`,
                 }}
             >
-                <div className={styles.content}>
-                    <div className={styles.description}>{description}</div>
-                    {choiceDesc.length !== 0 && <div className={styles.choice}>{choiceDesc}</div>}
-                    {character && <div className={styles.character}>{character}</div>}
-                </div>
+                <CardContent card={card} x={state.move[0]} />
                 <div className={styles.shirt} />
             </div>
         </div>
     );
 };
+
+function getChoice(x: number): 'yes' | 'no' | undefined {
+    if (x > choiceThreshold) {
+        return 'yes';
+    }
+
+    if (x < -choiceThreshold) {
+        return 'no';
+    }
+}
+
+function getCardPosition(x: number) {
+    const R = 500;
+    // x^2 + y^2 = R^2
+    // y = \/r^2 - x^2
+    // x = sinA * R
+    const angle = Math.asin(x / R);
+    const y = R - Math.sqrt(R * R - x * x);
+    return {
+        x,
+        y,
+        angle,
+    };
+}
