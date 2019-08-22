@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/teamlead-reigns/precache-manifest.a4e2fda17933dc4b6f7b6c9cb008c375.js"
+  "/teamlead-reigns/precache-manifest.37ae84edb00ab0df97b7f2fe3e2e8e3e.js"
 );
 
 self.addEventListener('message', (event) => {
