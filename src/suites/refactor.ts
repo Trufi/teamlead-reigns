@@ -4,6 +4,7 @@ export const refactor: Suite = {
     startCard: {
         character: 'Петя, сеньор',
         description: 'Я думаю, что нам пора порефакторить работу со стором',
+        skipSteps: 0,
         yes: {
             description: 'Давай',
             scores: {

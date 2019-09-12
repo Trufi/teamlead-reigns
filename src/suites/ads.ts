@@ -4,6 +4,7 @@ export const ads: Suite = {
     startCard: {
         character: 'Лена, аналитик',
         description: 'Повесим рекламный баннер на входе?',
+        skipSteps: 0,
         yes: {
             description: 'Деньги — нужны',
             scores: {

@@ -4,7 +4,6 @@ import { Suite } from '../types';
 import { newTech } from './newTech';
 import { refactor } from './refactor';
 import { fridayRelease } from './fridayRelease';
-// import { ccpm } from './ccpm';
 import { junior } from './junior';
 
 export const suites: { [key: string]: Suite } = {
@@ -13,6 +12,5 @@ export const suites: { [key: string]: Suite } = {
     newTech,
     refactor,
     fridayRelease,
-    // ccpm,
     junior,
 };

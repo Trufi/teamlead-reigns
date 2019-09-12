@@ -8,7 +8,7 @@ export interface Scores {
 export interface CardChoice {
     description: string;
     scores: ScoresEffect;
-    nextCard?: NextCard;
+    nextCard?: Card;
 }
 
 export interface Card {
@@ -17,14 +17,10 @@ export interface Card {
     image?: string;
     yes: CardChoice;
     no: CardChoice;
+    skipSteps: number;
 }
 
 export type ScoresEffect = Partial<Scores>;
-
-export interface NextCard {
-    card: Card;
-    skipSteps: number;
-}
 
 export interface Suite {
     startCard: Card;

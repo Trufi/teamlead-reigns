@@ -35,7 +35,7 @@ const effect = (state: State, effect: CardChoice): State => {
     let [{ suite }, ...deck] = state.deck;
 
     if (effect.nextCard) {
-        deck = arrayInsert(deck, effect.nextCard.skipSteps, { suite, card: effect.nextCard.card });
+        deck = arrayInsert(deck, effect.nextCard.skipSteps, { suite, card: effect.nextCard });
     } else {
         deck = [...deck, { suite, card: suites[suite].startCard }];
     }

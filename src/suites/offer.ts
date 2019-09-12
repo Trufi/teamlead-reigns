@@ -4,6 +4,7 @@ export const offer: Suite = {
     startCard: {
         character: 'Артем, мухожук',
         description: 'Я ухожу, меня позвали в Nanosoft с увеличением зарплаты на 20%',
+        skipSteps: 0,
         yes: {
             description: 'Поднять зарплату',
             scores: {
@@ -11,60 +12,54 @@ export const offer: Suite = {
             },
             nextCard: {
                 skipSteps: 3,
-                card: {
-                    character: 'Артем, мухожук',
-                    description:
-                        'Друг предложил мне работать в Pear, я подумал и ухожу, там зарплата на 50% выше',
-                    yes: {
-                        description: 'Поднять зарплату',
-                        scores: {
-                            money: -15,
-                        },
-                        nextCard: {
-                            skipSteps: 3,
-                            card: {
-                                character: 'Артем, мухожук',
-                                description: 'Ухожу. Hooli. x2.',
+                character: 'Артем, мухожук',
+                description:
+                    'Друг предложил мне работать в Pear, я подумал и ухожу, там зарплата на 50% выше',
+                yes: {
+                    description: 'Поднять зарплату',
+                    scores: {
+                        money: -15,
+                    },
+                    nextCard: {
+                        skipSteps: 3,
+                        character: 'Артем, мухожук',
+                        description: 'Ухожу. Hooli. x2.',
+                        yes: {
+                            description: 'Поднять зарплату до х2',
+                            scores: {
+                                money: -20,
+                            },
+                            nextCard: {
+                                skipSteps: 3,
+                                character: 'Петя, сеньор',
+                                description:
+                                    'Почему Васе подняли зарплату, а мне нет? Он делает в 2 раза меньше меня!',
                                 yes: {
-                                    description: 'Поднять зарплату до х2',
+                                    description: 'Поднять зарплату Пете',
                                     scores: {
                                         money: -20,
                                     },
-                                    nextCard: {
-                                        skipSteps: 3,
-                                        card: {
-                                            character: 'Петя, сеньор',
-                                            description:
-                                                'Почему Васе подняли зарплату, а мне нет? Он делает в 2 раза меньше меня!',
-                                            yes: {
-                                                description: 'Поднять зарплату Пете',
-                                                scores: {
-                                                    money: -20,
-                                                },
-                                            },
-                                            no: {
-                                                description: 'У Васи сложная ситуация',
-                                                scores: {
-                                                    team: -10,
-                                                },
-                                            },
-                                        },
-                                    },
                                 },
                                 no: {
-                                    description: 'Ну и катись!',
+                                    description: 'У Васи сложная ситуация',
                                     scores: {
-                                        team: -20,
+                                        team: -10,
                                     },
                                 },
                             },
                         },
-                    },
-                    no: {
-                        description: 'Ну, удачи',
-                        scores: {
-                            team: -10,
+                        no: {
+                            description: 'Ну и катись!',
+                            scores: {
+                                team: -20,
+                            },
                         },
+                    },
+                },
+                no: {
+                    description: 'Ну, удачи',
+                    scores: {
+                        team: -10,
                     },
                 },
             },
