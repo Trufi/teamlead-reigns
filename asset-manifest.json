@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/teamlead-reigns/static/css/main.00f3bfa9.chunk.css",
-    "main.js": "/teamlead-reigns/static/js/main.8f715057.chunk.js",
-    "main.js.map": "/teamlead-reigns/static/js/main.8f715057.chunk.js.map",
-    "runtime~main.js": "/teamlead-reigns/static/js/runtime~main.11e54acd.js",
-    "runtime~main.js.map": "/teamlead-reigns/static/js/runtime~main.11e54acd.js.map",
-    "static/js/2.a3da3fe7.chunk.js": "/teamlead-reigns/static/js/2.a3da3fe7.chunk.js",
-    "static/js/2.a3da3fe7.chunk.js.map": "/teamlead-reigns/static/js/2.a3da3fe7.chunk.js.map",
+    "main.css": "/teamlead-reigns/static/css/main.39e8cee8.chunk.css",
+    "main.js": "/teamlead-reigns/static/js/main.e59ce146.chunk.js",
+    "main.js.map": "/teamlead-reigns/static/js/main.e59ce146.chunk.js.map",
+    "runtime~main.js": "/teamlead-reigns/static/js/runtime~main.b3d72e23.js",
+    "runtime~main.js.map": "/teamlead-reigns/static/js/runtime~main.b3d72e23.js.map",
+    "static/js/2.bb704492.chunk.js": "/teamlead-reigns/static/js/2.bb704492.chunk.js",
+    "static/js/2.bb704492.chunk.js.map": "/teamlead-reigns/static/js/2.bb704492.chunk.js.map",
     "index.html": "/teamlead-reigns/index.html",
-    "precache-manifest.37ae84edb00ab0df97b7f2fe3e2e8e3e.js": "/teamlead-reigns/precache-manifest.37ae84edb00ab0df97b7f2fe3e2e8e3e.js",
+    "precache-manifest.99de6494f785febd177ad07973a73556.js": "/teamlead-reigns/precache-manifest.99de6494f785febd177ad07973a73556.js",
     "service-worker.js": "/teamlead-reigns/service-worker.js",
-    "static/css/main.00f3bfa9.chunk.css.map": "/teamlead-reigns/static/css/main.00f3bfa9.chunk.css.map"
+    "static/css/main.39e8cee8.chunk.css.map": "/teamlead-reigns/static/css/main.39e8cee8.chunk.css.map"
   }
 }
