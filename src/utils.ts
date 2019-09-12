@@ -1,6 +1,8 @@
 import { suites } from './suites';
 import { DeckCard } from './types';
 
+export const randomSeed = () => Math.round(Math.random() * 2147483647);
+
 export const random = (seed: number) => {
     seed = (seed * 16807) % 2147483647;
     return [seed, (seed - 1) / 2147483646];

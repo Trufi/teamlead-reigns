@@ -10,6 +10,7 @@ import {
 } from './types';
 import { arrayInsert, clamp, randomDeck } from './utils';
 import { suites } from './suites';
+import { createState } from './state';
 
 export const reducer = (state: State, action: Action): State => {
     switch (action.type) {
@@ -19,6 +20,8 @@ export const reducer = (state: State, action: Action): State => {
             return no(state, action);
         case 'showAnswer':
             return showAnswer(state, action);
+        case 'restart':
+            return createState(state.seed);
         default:
             return state;
     }

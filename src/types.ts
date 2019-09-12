@@ -53,5 +53,9 @@ export interface ShowAnswerAction {
     answer: 'yes' | 'no' | undefined;
 }
 
-export type Action = YesAction | NoAction | ShowAnswerAction;
+export interface RestartAction {
+    type: 'restart';
+}
+
+export type Action = YesAction | NoAction | ShowAnswerAction | RestartAction;
 export type Dispatch = React.Dispatch<Action>;
