@@ -5,6 +5,7 @@ import { newTech } from './newTech';
 import { refactor } from './refactor';
 import { fridayRelease } from './fridayRelease';
 import { junior } from './junior';
+import { bank } from './bank';
 
 export const suites: { [key: string]: Suite } = {
     offer,
@@ -13,4 +14,5 @@ export const suites: { [key: string]: Suite } = {
     refactor,
     fridayRelease,
     junior,
+    bank,
 };
