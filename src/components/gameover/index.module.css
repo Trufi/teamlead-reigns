@@ -1,0 +1,22 @@
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 700;
+    color: #ff0000;
+    background: radial-gradient(#ff00004f, #00000000);
+    user-select: none;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 70px;
+}

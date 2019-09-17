@@ -6,6 +6,7 @@ import { State } from '../../types';
 import { CardComponent } from '../card';
 import { randomSeed } from '../../utils';
 import { ScoresHeader } from '../scoresHeader';
+import { GameOver } from '../gameover';
 
 export const App = () => {
     let initialState = createState(randomSeed());
@@ -37,11 +38,7 @@ export const App = () => {
                 <div className={styles.dayCounter}>{state.day}</div>
                 <div>day</div>
             </div>
-            {state.lose && (
-                <div className={styles.loseScreen} onClick={() => dispatch({ type: 'restart' })}>
-                    WASTED
-                </div>
-            )}
+            {state.lose && <GameOver scores={state.scores} dispatch={dispatch} />}
             <div className={styles.description}>
                 Игра про сложную жизнь тимлида. Все совпадения случайны.
             </div>
