@@ -8,14 +8,28 @@
 .point {
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 8px;
 }
 
 .pointInner {
     margin-bottom: 10px;
+    background: #ffbb00;
     width: 6px;
     height: 6px;
     border-radius: 3px;
-    background: #ffbb00;
+}
+
+.low {
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.high {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
 }
 
 .volume {

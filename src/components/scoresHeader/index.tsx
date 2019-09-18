@@ -15,29 +15,17 @@ export const ScoresHeader = ({ scores, effect }: ScoresHeaderProps) => {
                 <Score
                     type={'audience'}
                     value={scores.audience}
-                    willChange={effect && Boolean(effect.audience)}
+                    delta={effect && effect.audience}
                 />
             </div>
             <div>
-                <Score
-                    type={'code'}
-                    value={scores.code}
-                    willChange={effect && Boolean(effect.code)}
-                />
+                <Score type={'code'} value={scores.code} delta={effect && effect.code} />
             </div>
             <div>
-                <Score
-                    type={'team'}
-                    value={scores.team}
-                    willChange={effect && Boolean(effect.team)}
-                />
+                <Score type={'team'} value={scores.team} delta={effect && effect.team} />
             </div>
             <div>
-                <Score
-                    type={'money'}
-                    value={scores.money}
-                    willChange={effect && Boolean(effect.money)}
-                />
+                <Score type={'money'} value={scores.money} delta={effect && effect.money} />
             </div>
         </div>
     );

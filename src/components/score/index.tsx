@@ -1,22 +1,25 @@
 import React from 'react';
+import cn from 'classnames';
 import styles from './index.module.css';
 
 export interface ScoreProps {
     type: string;
     value: number;
-    willChange?: boolean;
+    delta?: number;
 }
 
-export const Score = ({ type, value, willChange }: ScoreProps) => {
+export const Score = ({ type, value, delta = 0 }: ScoreProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.point}>
-                {
+                {delta !== 0 && (
                     <div
-                        className={styles.pointInner}
-                        style={{ visibility: willChange ? 'visible' : 'hidden' }}
+                        className={cn(styles.pointInner, {
+                            [styles.low]: Math.abs(delta) <= 5,
+                            [styles.high]: Math.abs(delta) >= 20,
+                        })}
                     />
-                }
+                )}
             </div>
             <div className={styles.volume}>
                 <div
