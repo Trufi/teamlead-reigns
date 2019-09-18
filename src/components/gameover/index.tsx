@@ -9,15 +9,15 @@ const messages: { [key in keyof Scores]: { max: string; min: string } } = {
     },
     money: {
         min: 'Компания разорена.',
-        max: 'Босс заработал столько денег — сколько мечтал. Вы уволены.',
+        max: 'Босс заработал столько денег — сколько мечтал.',
     },
     audience: {
         min: 'Ваш продукт забыт, и место ему в музее.',
-        max: 'Вас поглотил Hooli. Вы уволены.',
+        max: 'Вас поглотил Hooli.',
     },
     team: {
-        min: 'Как жаль, что один вы вряд ли что-то сможете.',
-        max: 'Компания слишком разрослась, процессы стали неуправляемыми. Вы уволены.',
+        min: 'Какой вы тимлид без команды?',
+        max: 'Компания слишком разрослась, процессы стали неуправляемыми.',
     },
 };
 
@@ -40,7 +40,7 @@ export const GameOver = ({ scores, dispatch }: GameOverProps) => {
 
     return (
         <div className={styles.container} onClick={() => dispatch({ type: 'restart' })}>
-            <div className={styles.title}>WASTED</div>
+            <div className={styles.title}>FIRED</div>
             <div className={styles.description}>{message}</div>
         </div>
     );
