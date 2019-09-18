@@ -8,11 +8,9 @@ const turned: Card = {
     skipSteps: 5,
     yes: {
         description: 'Ок',
-        scores: {},
     },
     no: {
         description: 'Что...',
-        scores: {},
     },
 };
 
@@ -44,7 +42,6 @@ export const vegan: Suite = {
         },
         no: {
             description: 'Нет',
-            scores: {},
             nextCard: {
                 skipSteps: 3,
                 character,

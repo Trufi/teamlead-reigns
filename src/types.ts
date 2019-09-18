@@ -7,7 +7,7 @@ export interface Scores {
 
 export interface CardChoice {
     description: string;
-    scores: ScoresEffect;
+    scores?: ScoresEffect;
     nextCard?: Card;
 }
 

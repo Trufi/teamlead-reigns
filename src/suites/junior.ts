@@ -7,7 +7,6 @@ export const junior: Suite = {
         skipSteps: 0,
         yes: {
             description: 'ООП',
-            scores: {},
             nextCard: {
                 skipSteps: 3,
                 character: 'Андрей, джуниор',
@@ -29,7 +28,6 @@ export const junior: Suite = {
         },
         no: {
             description: 'ФП',
-            scores: {},
             nextCard: {
                 skipSteps: 3,
                 character: 'Петя, сеньор',

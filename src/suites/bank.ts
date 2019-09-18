@@ -12,7 +12,6 @@ const lastRepayment: Card = {
     },
     no: {
         description: 'Нет',
-        scores: {},
         nextCard: {
             skipSteps: 5,
             character: 'Владимир, судебный пристав',
@@ -59,7 +58,6 @@ export const bank: Suite = {
                 },
                 no: {
                     description: 'Нет',
-                    scores: {},
                     nextCard: {
                         skipSteps: 0,
                         character: 'Владислав, личный менеджер',
@@ -74,7 +72,6 @@ export const bank: Suite = {
                         },
                         no: {
                             description: 'Нет',
-                            scores: {},
                             nextCard: {
                                 skipSteps: 5,
                                 character: 'Кирилл, коллектор',
@@ -87,7 +84,6 @@ export const bank: Suite = {
                                 },
                                 no: {
                                     description: 'Обойдетесь',
-                                    scores: {},
                                     nextCard: {
                                         skipSteps: 2,
                                         character: 'Кирилл и Сергей, коллекторы',
@@ -100,7 +96,6 @@ export const bank: Suite = {
                                         },
                                         no: {
                                             description: 'Уходите',
-                                            scores: {},
                                             nextCard: {
                                                 skipSteps: 2,
                                                 character: 'Кирилл, Сергей, Андрей, коллекторы',
@@ -113,7 +108,6 @@ export const bank: Suite = {
                                                 },
                                                 no: {
                                                     description: 'Нет',
-                                                    scores: {},
                                                     nextCard: {
                                                         skipSteps: 0,
                                                         character:
@@ -151,7 +145,6 @@ export const bank: Suite = {
         },
         no: {
             description: 'Нет',
-            scores: {},
         },
     },
 };

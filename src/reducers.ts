@@ -49,7 +49,7 @@ const effect = (state: State, effect: CardChoice): State => {
         [seed, deck] = randomDeck(seed);
     }
 
-    const scores = newScores(state.scores, effect.scores);
+    const scores = effect.scores ? newScores(state.scores, effect.scores) : state.scores;
 
     return {
         ...state,
