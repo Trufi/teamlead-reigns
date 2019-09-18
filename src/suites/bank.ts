@@ -1,10 +1,45 @@
-import { Suite } from '../types';
+import { Suite, Card } from '../types';
+
+const lastRepayment: Card = {
+    skipSteps: 5,
+    character: 'Владислав, личный менеджер',
+    description: 'Здравствуйте, последняя выплата по кредиту',
+    yes: {
+        description: 'На',
+        scores: {
+            money: -15,
+        },
+    },
+    no: {
+        description: 'Нет',
+        scores: {},
+        nextCard: {
+            skipSteps: 5,
+            character: 'Владимир, судебный пристав',
+            description: 'Мы забираем у вас компьютеры на сумму задолженности',
+            yes: {
+                description: 'Что...',
+                scores: {
+                    money: -10,
+                    team: -5,
+                },
+            },
+            no: {
+                description: 'Что...',
+                scores: {
+                    money: -10,
+                    team: -5,
+                },
+            },
+        },
+    },
+};
 
 export const bank: Suite = {
     startCard: {
         character: 'Владислав, личный менеджер',
         description:
-            'Здравствуйте, я ваш личный менеджер в банке. Не желаете приобрести кредит на выгодных условиях?',
+            'Здравствуйте, я ваш личный менеджер. Не желаете приобрести кредит на выгодных условиях?',
         skipSteps: 0,
         yes: {
             description: 'Да',
@@ -20,40 +55,7 @@ export const bank: Suite = {
                     scores: {
                         money: -15,
                     },
-                    nextCard: {
-                        skipSteps: 5,
-                        character: 'Владислав, личный менеджер',
-                        description: 'Здравствуйте, последняя выплата по кредиту',
-                        yes: {
-                            description: 'На',
-                            scores: {
-                                money: -15,
-                            },
-                        },
-                        no: {
-                            description: 'Нет',
-                            scores: {},
-                            nextCard: {
-                                skipSteps: 5,
-                                character: 'Владимир, судебный пристав',
-                                description: 'Мы забираем у вас компьютеры на сумму задолженности',
-                                yes: {
-                                    description: 'Что...',
-                                    scores: {
-                                        money: -10,
-                                        team: -5,
-                                    },
-                                },
-                                no: {
-                                    description: 'Что...',
-                                    scores: {
-                                        money: -10,
-                                        team: -5,
-                                    },
-                                },
-                            },
-                        },
-                    },
+                    nextCard: lastRepayment,
                 },
                 no: {
                     description: 'Нет',
@@ -68,41 +70,7 @@ export const bank: Suite = {
                             scores: {
                                 money: -15,
                             },
-                            nextCard: {
-                                skipSteps: 5,
-                                character: 'Владислав, личный менеджер',
-                                description: 'Здравствуйте, последняя выплата по кредиту',
-                                yes: {
-                                    description: 'На',
-                                    scores: {
-                                        money: -15,
-                                    },
-                                },
-                                no: {
-                                    description: 'Нет',
-                                    scores: {},
-                                    nextCard: {
-                                        skipSteps: 5,
-                                        character: 'Владимир, судебный пристав',
-                                        description:
-                                            'Мы забираем у вас компьютеры на сумму задолженности',
-                                        yes: {
-                                            description: 'Что...',
-                                            scores: {
-                                                money: -10,
-                                                team: -5,
-                                            },
-                                        },
-                                        no: {
-                                            description: 'Что...',
-                                            scores: {
-                                                money: -10,
-                                                team: -5,
-                                            },
-                                        },
-                                    },
-                                },
-                            },
+                            nextCard: lastRepayment,
                         },
                         no: {
                             description: 'Нет',

@@ -6,6 +6,9 @@ import { refactor } from './refactor';
 import { fridayRelease } from './fridayRelease';
 import { junior } from './junior';
 import { bank } from './bank';
+import { analog } from './analog';
+import { vegan } from './vegan';
+import { deviceCut } from './deviceCut';
 
 export const suites: { [key: string]: Suite } = {
     offer,
@@ -15,4 +18,7 @@ export const suites: { [key: string]: Suite } = {
     fridayRelease,
     junior,
     bank,
+    analog,
+    vegan,
+    deviceCut,
 };
