@@ -41,7 +41,7 @@ export const bank: Suite = {
             'Здравствуйте, я ваш личный менеджер. Не желаете приобрести кредит на выгодных условиях?',
         skipSteps: 0,
         yes: {
-            description: 'Да',
+            description: 'Желаю',
             scores: {
                 money: 20,
             },

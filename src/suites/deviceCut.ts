@@ -3,7 +3,7 @@ import { Suite, Card } from '../types';
 const objection: Card = {
     skipSteps: 0,
     character: 'Лена, аналитик',
-    description: 'Но ведь WebGL 2.0 не поддериживается в 25% браузерах!',
+    description: 'Но ведь WebGL 2.0 не поддерживается в 25% браузерах!',
     yes: {
         description: 'Пофиг',
         scores: { team: 10, audience: -10 },

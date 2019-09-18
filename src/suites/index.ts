@@ -9,6 +9,7 @@ import { bank } from './bank';
 import { analog } from './analog';
 import { vegan } from './vegan';
 import { deviceCut } from './deviceCut';
+import { prodVsTech } from './prodVsTech';
 
 export const suites: { [key: string]: Suite } = {
     offer,
@@ -21,4 +22,5 @@ export const suites: { [key: string]: Suite } = {
     analog,
     vegan,
     deviceCut,
+    prodVsTech,
 };

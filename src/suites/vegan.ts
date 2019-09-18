@@ -10,7 +10,7 @@ const turned: Card = {
         description: 'Ок',
     },
     no: {
-        description: 'Что...',
+        description: 'Хм',
     },
 };
 
