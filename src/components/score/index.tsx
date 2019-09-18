@@ -10,7 +10,7 @@ export interface ScoreProps {
 
 export const Score = ({ type, value, delta = 0 }: ScoreProps) => {
     return (
-        <div className={styles.container}>
+        <div className={cn(styles.container, { [styles.failed]: value === 0 || value === 100 })}>
             <div className={styles.point}>
                 {delta !== 0 && (
                     <div

@@ -31,20 +31,29 @@
     height: 8px;
     border-radius: 4px;
 }
-
 .volume {
     position: relative;
     width: 45px;
     height: 90px;
     background: #fff4d6;
+    box-sizing: border-box;
+}
+
+.failed .volume {
+    border: 2px solid #ff0000;
+    background: #ffe1e1;
 }
 
 .innerVolume {
     position: absolute;
     bottom: 0;
-    width: 45px;
+    width: 100%;
     background: #ffbb00;
     transition: height 1s;
+}
+
+.failed .innerVolume {
+    background: #ff0000;
 }
 
 .icon {
@@ -55,4 +64,8 @@
     margin-left: -50px;
     font-size: 13px;
     text-align: center;
+}
+
+.failed .icon {
+    color: #ff0000;
 }

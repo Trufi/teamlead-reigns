@@ -33,7 +33,7 @@ export const App = () => {
                 scores={state.scores}
                 effect={state.answer && card[state.answer].scores}
             />
-            <CardComponent card={card} dispatch={dispatch} />
+            {state.lose === false && <CardComponent card={card} dispatch={dispatch} />}
             <div className={styles.days}>
                 <div className={styles.dayCounter}>{state.day}</div>
                 <div>day</div>
