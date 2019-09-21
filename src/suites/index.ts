@@ -12,15 +12,15 @@ import { deviceCut } from './deviceCut';
 import { prodVsTech } from './prodVsTech';
 
 export const suites: { [key: string]: Suite } = {
-    offer,
-    ads,
-    newTech,
-    refactor,
-    fridayRelease,
-    junior,
+    // offer,
+    // ads,
+    // newTech,
+    // refactor,
+    // fridayRelease,
+    // junior,
     bank,
-    analog,
-    vegan,
-    deviceCut,
-    prodVsTech,
+    // analog,
+    // vegan,
+    // deviceCut,
+    // prodVsTech,
 };

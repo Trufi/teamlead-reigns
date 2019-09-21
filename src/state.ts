@@ -8,7 +8,7 @@ export const createState = (seed: number): State => {
         seed: nextSeed,
         scores: {
             audience: 50,
-            money: 50,
+            money: 40,
             code: 50,
             team: 50,
         },

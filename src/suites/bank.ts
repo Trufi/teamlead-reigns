@@ -35,6 +35,7 @@ const lastRepayment: Card = {
 };
 
 export const bank: Suite = {
+    conditions: [['money', '<', 50]],
     startCard: {
         character: 'Владислав, личный менеджер',
         description:

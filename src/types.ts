@@ -22,7 +22,12 @@ export interface Card {
 
 export type ScoresEffect = Partial<Scores>;
 
+export type ConditionType = 'code' | 'money' | 'audience' | 'team';
+export type ConditionSign = '<' | '>';
+export type Condition = [ConditionType, ConditionSign, number];
+
 export interface Suite {
+    conditions?: Condition[];
     startCard: Card;
 }
 

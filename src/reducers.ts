@@ -7,6 +7,10 @@ import {
     ScoresEffect,
     CardChoice,
     ShowAnswerAction,
+    Card,
+    DeckCard,
+    Suite,
+    ConditionSign,
 } from './types';
 import { arrayInsert, clamp, randomDeck } from './utils';
 import { suites } from './suites';
@@ -34,13 +38,70 @@ const showAnswer = (state: State, { answer }: ShowAnswerAction): State => {
     };
 };
 
+const createDeckCard = (suite: string, card: Card): DeckCard => ({
+    suite,
+    card,
+});
+
+const signValue = (sign: ConditionSign, a: number, b: number): boolean => {
+    switch (sign) {
+        case '<':
+            return a < b;
+        case '>':
+            return a > b;
+    }
+
+    return true;
+};
+
+const satisfyConditions = (suite: Suite, state: State): boolean => {
+    if (!suite.conditions) {
+        return true;
+    }
+
+    return suite.conditions.every(([type, sign, value]) => {
+        switch (type) {
+            case 'code':
+            case 'money':
+            case 'audience':
+            case 'team':
+                return signValue(sign, state.scores[type], value);
+        }
+
+        return true;
+    });
+};
+
+const skipUnableSuites = (state: State, deck: DeckCard[]) => {
+    const skipedDeckCards: DeckCard[] = [];
+
+    // Если следующая карта — первая в кейсе, то проверить условия
+    let [deckCard, ...rest] = deck;
+
+    while (deckCard) {
+        const { suite, card } = deckCard;
+        const nextSuite = suites[suite];
+
+        if (card === nextSuite.startCard) {
+            if (!satisfyConditions(nextSuite, state)) {
+                skipedDeckCards.push(deckCard);
+                [deckCard, ...rest] = rest;
+            }
+        }
+    }
+
+    return [deckCard, ...skipedDeckCards, ...rest];
+};
+
 const effect = (state: State, effect: CardChoice): State => {
     let [{ suite }, ...deck] = state.deck;
 
     if (effect.nextCard) {
-        deck = arrayInsert(deck, effect.nextCard.skipSteps, { suite, card: effect.nextCard });
+        deck = arrayInsert(deck, effect.nextCard.skipSteps, createDeckCard(suite, effect.nextCard));
     } else {
-        deck = [...deck, { suite, card: suites[suite].startCard }];
+        deck = [...deck, createDeckCard(suite, suites[suite].startCard)];
+
+        deck = skipUnableSuites(state, deck);
     }
 
     let { seed } = state;
