@@ -20,11 +20,11 @@ export const deviceCut: Suite = {
         character: 'Федор, новатор',
         description: 'Давай использовать WebGL 2.0? Он быстрее и круче.',
         yes: {
-            description: 'Мм...',
+            description: '',
             nextCard: objection,
         },
         no: {
-            description: 'Мм...',
+            description: '',
             nextCard: objection,
         },
     },

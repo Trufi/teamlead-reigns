@@ -34,9 +34,7 @@ const PrevCardComponent = ({ data: { card, x, y, angle } }: { data: PrevCard }) 
         <div
             className={styles.prevCard}
             style={{
-                transform: `translate(${position.x}px, ${position.y}px) rotate(${
-                    position.angle
-                }rad)`,
+                transform: `translate(${position.x}px, ${position.y}px) rotate(${position.angle}rad)`,
             }}
         >
             <div className={styles.description}>{description}</div>
@@ -51,7 +49,9 @@ const CardContent = ({ card, x }: { card: Card; x: number }) => {
     return (
         <div className={styles.content}>
             <div className={styles.description}>{card.description}</div>
-            {choice && <div className={styles.choice}>{card[choice].description}</div>}
+            {choice && card[choice].description.length > 0 && (
+                <div className={styles.choice}>{card[choice].description}</div>
+            )}
             {card.character && <div className={styles.character}>{card.character}</div>}
         </div>
     );
