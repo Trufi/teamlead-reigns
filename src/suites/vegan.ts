@@ -37,11 +37,12 @@ export const vegan: Suite = {
         skipSteps: 0,
         yes: {
             description: 'Ок',
-            scores: { team: -5 },
+            scores: { money: -5 },
             nextCard: recycle,
         },
         no: {
             description: 'Нет',
+            scores: { team: -5 },
             nextCard: {
                 skipSteps: 3,
                 character,

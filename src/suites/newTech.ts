@@ -77,7 +77,7 @@ export const newTech: Suite = {
                         skipSteps: 3,
                         character: 'Лиза, HR',
                         description:
-                            'Мы нашли разработчика со знанием Reason, но он привык к зарплате в полтора раз выше, берем?',
+                            'Мы нашли разработчика со знанием Reason, но он привык к зарплате в полтора раза выше, берем?',
                         yes: {
                             description: 'Берем',
                             scores: {
