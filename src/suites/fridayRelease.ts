@@ -7,7 +7,7 @@ export const fridayRelease: Suite = {
         skipSteps: 0,
         yes: {
             description: 'Да',
-            scores: { money: 5, audience: 5 },
+            scores: { money: 10, audience: 15 },
             nextCard: {
                 skipSteps: 0,
                 character: 'Лена, аналитик',
