@@ -1,8 +1,25 @@
-import { Suite } from '../types';
+import { Suite, Card } from '../types';
+
+const character = 'Артем, мухожук';
+
+const comeback: Card = {
+    skipSteps: 15,
+    character,
+    description: 'Хочу назад',
+    yes: {
+        description: 'Ок',
+        scores: {
+            team: 10,
+        },
+    },
+    no: {
+        description: 'Нет',
+    },
+};
 
 export const offer: Suite = {
     startCard: {
-        character: 'Артем, мухожук',
+        character,
         description: 'Я ухожу, меня позвали в Nanosoft с увеличением зарплаты на 20%',
         skipSteps: 0,
         yes: {
@@ -12,7 +29,7 @@ export const offer: Suite = {
             },
             nextCard: {
                 skipSteps: 3,
-                character: 'Артем, мухожук',
+                character,
                 description:
                     'Друг предложил мне работать в Pear, я подумал и ухожу, там зарплата на 50% выше',
                 yes: {
@@ -22,7 +39,7 @@ export const offer: Suite = {
                     },
                     nextCard: {
                         skipSteps: 3,
-                        character: 'Артем, мухожук',
+                        character,
                         description: 'Ухожу. Hooli. x2.',
                         yes: {
                             description: 'Поднять зарплату до х2',
@@ -53,6 +70,7 @@ export const offer: Suite = {
                             scores: {
                                 team: -20,
                             },
+                            nextCard: comeback,
                         },
                     },
                 },
@@ -61,6 +79,7 @@ export const offer: Suite = {
                     scores: {
                         team: -10,
                     },
+                    nextCard: comeback,
                 },
             },
         },
@@ -69,6 +88,7 @@ export const offer: Suite = {
             scores: {
                 team: -10,
             },
+            nextCard: comeback,
         },
     },
 };
